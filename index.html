@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows假更新</title>
+    <link rel="stylesheet" href="./Windowsloading.css">
+</head>
+
+<body class="body-default">
+    <div class="loading">
+        <i>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </i>
+        <p class="txt">
+            <strong onclick="cb()" style="cursor: pointer;">正在进行更新<br>已完成&nbsp;<text id="num">0</text>&nbsp;%<br>请不要关闭你的计算机</strong>
+
+        </p>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        
+        var num = document.getElementById("num");
+        var n = Number(num.innerHTML);
+        console.log("[Debug]:初始值：" + n);
+
+
+        //生成随机数
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function waitAndAddOne() {
+            let waitTime = getRandomInt(5000, 30000); // 假设生成的随机数是5000(5s)到30000(30s)之间的整数
+            console.log("等待毫秒：" + waitTime + " =>秒："+waitTime/1000);
+
+            // 等待随机秒数后执行加1操作
+            setTimeout(function () {
+                n += 1;
+                console.log("等待完毕，当前“已完成”进度：" + n + "%");
+                num.innerHTML = n;
+                waitAndAddOne(); // 递归调用函数
+            }, waitTime);
+        }
+        // alert("点击文字可以切换背景颜色\n\n\n 2024 @南锣子酱 ver 1.0.0")
+        waitAndAddOne();
+    }
+</script>
+<script>
+    function cb() {
+      var body = document.body;
+      if (body.className === "body-default") {
+        body.className = "body-dark";
+      } else {
+        body.className = "body-default";
+      }
+    }
+  </script>
+
+</html>
