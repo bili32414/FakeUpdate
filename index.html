@@ -31,7 +31,7 @@
         var num = document.getElementById("num");
         var n = Number(num.innerHTML);
         var his=0
-        console.log("[Debug]:初始值：" + n);
+        console.log("%c[Debug]"+"%c已完成”初始值：" + n,"color:red","color:white");
 
 
         //生成随机数
@@ -42,13 +42,13 @@
         function waitAndAddOne() {
             let waitTime = getRandomInt(5000, 30000); // 假设生成的随机数是5000(5s)到30000(30s)之间的整数
             
-            console.log("[Wait]等待毫秒：" + waitTime + " =>秒："+waitTime/1000+"。");
-            console.log("[WaitHistory]已经过了"+his+"毫秒，"+his/1000+"秒");
+            console.log("%c[Wait]"+"%c等待毫秒：" + waitTime + " =>秒："+waitTime/1000+"。","color:green","color:white");
+            console.log("%c[WaitHistory]"+"%c已经过了"+his+"毫秒，"+his/1000+"秒","color:pink","color:white");
 
             // 等待随机秒数后执行加1操作
             setTimeout(function () {
                 n += 1;
-                console.log("等待完毕，当前“已完成”进度：" + n + "%");
+                console.log("%c[WaitFinish]"+"%c等待完毕，当前“已完成”进度：" + n + "%","color:yellow","color:white");
                 num.innerHTML = n;
                 waitAndAddOne(); // 递归调用函数
             }, waitTime);
