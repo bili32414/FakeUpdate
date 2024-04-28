@@ -43,8 +43,8 @@
 .loading i {
   margin: auto;
   position: absolute;
-  top: calc(50% - 5.5%);
-  left: calc(50% - 1.5%);
+  top: calc(50% - 90px);
+  left: calc(50% - 30px);
   width: 60px;
   height: 60px;
   display: block;
