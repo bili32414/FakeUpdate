@@ -68,5 +68,45 @@
       }
     }
   </script>
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+}, false);
+// 阻止 Ctrl, Alt, Win 键
+document.addEventListener('keydown', function(event) {
+  if (event.ctrlKey || event.altKey || event.metaKey) {
+    event.preventDefault();
+  }
+}, false);
 
+// 阻止 F11 键（全屏）
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'F11') {
+    event.preventDefault();
+  }
+}, false);
+
+
+// 监听全屏变化事件
+document.addEventListener('fullscreenchange', function() {
+  if (document.fullscreenElement) {
+    // 全屏时阻止 F11 键
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'F11') {
+        event.preventDefault();
+      }
+    }, false);
+  } else {
+    // 退出全屏时移除 F11 键的阻止
+    document.removeEventListener('keydown', function(event) {
+      if (event.key === 'F11') {
+        event.preventDefault();
+      }
+    }, false);
+  }
+});
+
+// 调用函数以切换全屏状态
+// toggleFullScreen();
+</script>
 </html>
